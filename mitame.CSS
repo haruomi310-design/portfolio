@@ -1,0 +1,33 @@
+.wdxl-lubrifont-jp-n-regular {
+  font-family: "WDXL Lubrifont JP N", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+    color: #ffffff;
+    background-color: #000000;
+    font-family: "WDXL Lubrifont JP N", sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: right;
+    font-size: 200px;
+    color: #ffffff;
+    padding: 0;
+    line-height: 0.8;
+
+}
+
+p {
+    text-align: center;
+    font-size: 10px;
+    color: #0000ff;
+}
+
+tatenaga {
+  font-size: 16px;
+  line-height: 2; /* 16px × 2 = 32px の高さになる */
+}
