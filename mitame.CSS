@@ -1,12 +1,15 @@
-.wdxl-lubrifont-jp-n-regular {
-  font-family: "WDXL Lubrifont JP N", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-
+html {
+  overflow-x: hidden;
+}
 
 body {
+    margin: 0;
     color: #000000;
     background-color: #ffffff;
     font-size: 20px;
@@ -55,34 +58,62 @@ body {
 
 h1 {
   display: inline-block;
-    text-align: right;
-    font-size: 200px;
+    margin: 0;
+    max-width: 100%;
+    font-size: 10rem;
     color: #ffffff;
-    mix-blend-mode: overlay;
     padding: 0;
-    line-height: 0.72;
+    line-height: 0;
     font-weight: bold;
     letter-spacing: -0.05em;
 }
 
 h2 {
     text-align: center;
-    font-size: 100px;
+    font-size: 10rem;
     color: #000000;
 }
 
 p {
     text-align: center;
-    font-size: 40px;
+    font-size: 1.5rem;
     color: #000000;
     line-height: 1;
 }
 
+.overlay {
+  color: #ffffff;
+  mix-blend-mode: overlay;
+}
+
 .hrr {
+  color: #ffffff;
   display: inline-block;
-  transform: scaleY(2);
-  transform-origin: top;
-  line-height: 0.6;
+  font-weight: 500;
+  font-size: 15rem;
+  text-align: left;
+  letter-spacing: -0.2em;
+  /* 大文字の見た目の高さに行ボックスを合わせる */
+  line-height: 0.72em;
+  vertical-align: top;
+}
+
+.ﾖ {
+  color: #ffffff;
+    display: inline-block;
+  mix-blend-mode: overlay;
+  letter-spacing: -0.15em;
+  transform-origin: bottom;
+  animation: ﾖ_nyu 1s ;
+}
+
+@keyframes ﾖ_nyu{
+  0% {
+  transform: translateY(100%)
+  }
+  100% {
+  transform: translateY(0)
+  }
 }
 
 
@@ -115,7 +146,7 @@ clip-path: polygon(45% 85%, 45% 40%, 80% 70%, 70% 75%, 70% 90%, 55% 80%);
   opacity: 0;
 }
 
-/* .is-hovering に切り替わると、四角が丸く大きく変形する */
+/* .is-hovering に切り替わると、四角が指っぽいのに変形する */
 .custom-cursor.is-hovering {
   transform: translate(-50%, -50%);
 -webkit-clip-path: polygon(45% 70%, 45% 40%, 55% 40%, 80% 75%, 55% 100%, 30% 80%);
@@ -160,50 +191,60 @@ clip-path: polygon(45% 70%, 45% 40%, 55% 40%, 80% 75%, 55% 100%, 30% 80%);
 }
 
 .pararax_frame {
-  height: 440px;
+  display: flow-root;
+  height: auto;
+  min-height: 0;
   background-attachment: fixed;
-  background-size: cover;
   background-image: url("media/IMG_3641.jpg");
   background-size: cover;
+  transform-origin: bottom;
 }
 
 .carousel {
   overflow: hidden;
   width: 100%;
   white-space: nowrap;
+  padding: 20px 0;
 }
 
 .carousel-track {
   display: inline-flex;
   animation: scroll 40s linear infinite;
-  
+  vertical-align: top;
 }
 
 /* ホバー時に一時停止する場合 */
 .carousel-track:hover {
-  animation-play-state: paused;
-}
-
-.carousel-item:hover {
-  transform: scale(1.05); /* 拡大率を調整 */
 }
 
 .carousel-item {
   /* アイテムの幅やスタイルを指定 */
-  flex: 0 0 400px;
+  flex: 0 0 clamp(280px, 34vw, 400px);
   padding: 20px;
   box-sizing: border-box;
-  transition: transform 0.3s ease;
+  position: relative;
+  vertical-align: top;
 }
-.carousel-item img {
-  width: 100%;        /* 親要素（item）の幅いっぱいに広げる */
-  height: 200px;      /* 高さを一律で固定したい場合（必要に応じて調整） */
-  object-fit: cover;  /* 画像の比率を保ったまま綺麗に収める */
-}
+.carousel-item img,
 .carousel-item video {
+  display: block;
   width: 100%;        /* 親要素（item）の幅いっぱいに広げる */
   height: 200px;      /* 高さを一律で固定したい場合（必要に応じて調整） */
-  object-fit: cover;  /* 動画の比率を保ったまま綺麗に収める */
+  aspect-ratio: 2 / 1;
+  object-fit: cover;  /* 画像の比率を保ったまま綺麗に収める */
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.carousel-item:hover img,
+.carousel-item:hover video,
+.carousel-item:focus-within img,
+.carousel-item:focus-within video {
+  transform: scale(1.05);
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes scroll {
@@ -239,5 +280,33 @@ clip-path: polygon(100% 0%, 70% 60%, 50% 100%, 30% 60%, 0% 0%, 50% 0%);
   100% {
     -webkit-clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
 clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
+  }
+}
+
+.rainbow-text {
+  background: linear-gradient(
+    90deg,
+    #ff0000 0%, #ff7f00 8.3%, #ffff00 16.6%, #00ff00 25%,
+    #0000ff 33.3%, #4b0082 41.6%, #8f00ff 50%,
+    #ff0000 58.3%, #ff7f00 66.6%, #ffff00 75%, #00ff00 83.3%,
+    #0000ff 91.6%, #4b0082 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-animation 1s linear infinite;
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+}
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(100%);
+  }
+  50% {
+    transform: scale(50%);
+  }
+  100% {
+    background-position: 110% 50%;
+    transform: scale(100%);
   }
 }
