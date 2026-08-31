@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+JP+N&display=swap');
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <link rel="stylesheet" href="mitame.CSS">
+</head>
+<body>
+    <div class="custom-cursor" aria-hidden="true"></div>
+
+    <main class="page-content">
+
+    <div class="pararax_frame">
+    <h1 class="namae"><span class="hrr">HRR</span>33333<br>&emsp;&emsp;33333</h1>
+    </div>
+
+    <div class="carousel">
+  <div class="carousel-track">
+    <!-- リストアイテム（必要に応じて複製） -->
+    <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文"></div>
+    <div class="carousel-item" role="button"><img src="media/wood.JPEG" alt="画像の説明文"></div>
+    <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" controls></video></div>
+    <!-- ループ用に関数を繋げるために同じアイテムを複製 -->
+    <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文"></div>
+    <div class="carousel-item" role="button"><img src="media/wood.JPEG" alt="画像の説明文"></div>
+    <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" controls></video></div>
+  </div>
+</div>
+
+    <h2>ABOUT</h2>
+    <p>↓</p>
+    <p>↓</p>
+    <p>私のポートフォリオ。色々実験します。</p>
+    <a class="cursor-demo-link" href="#">カーソルのデモリンク</a>
+    </main>
+</div>
+
+
+<script>
+    const customCursor = document.querySelector('.custom-cursor');
+    const hoverTargets = document.querySelectorAll('a, button, [role="button"]');
+
+    if (customCursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('pointermove', (event) => {
+            customCursor.style.left = `${event.clientX}px`;
+            customCursor.style.top = `${event.clientY}px`;
+            customCursor.classList.remove('is-hidden');
+        });
+
+        document.addEventListener('pointerleave', () => {
+            customCursor.classList.add('is-hidden');
+        });
+
+        hoverTargets.forEach((target) => {
+            target.addEventListener('pointerenter', () => {
+                customCursor.classList.add('is-hovering');
+            });
+            target.addEventListener('pointerleave', () => {
+                customCursor.classList.remove('is-hovering');
+            });
+        });
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        customCursor?.remove();
+    }
+</script>
+
+</body>
+</html>

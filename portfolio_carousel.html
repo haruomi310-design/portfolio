@@ -191,9 +191,11 @@
     const track = document.getElementById('track');
     const slides = Array.from(track.children);
     const dotsContainer = document.getElementById('dotsContainer');
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
 
     let currentIndex = 0;
     let autoPlayTimer;
+    let isPaused = false;
 
     slides.forEach((_, index) => {
       const dot = document.createElement('div');
@@ -227,9 +229,17 @@
     }
 
     function startTimer() {
+      if (isPaused) return;
+
+      clearInterval(autoPlayTimer);
       autoPlayTimer = setInterval(() => {
         moveSlide(1);
       }, 4000);
+    }
+
+    function pauseTimer() {
+      isPaused = true;
+      clearInterval(autoPlayTimer);
     }
 
     function resetTimer() {
@@ -237,9 +247,14 @@
       startTimer();
     }
 
+    carouselWrapper.addEventListener('pointerenter', pauseTimer);
+    carouselWrapper.addEventListener('pointerleave', () => {
+      isPaused = false;
+      startTimer();
+    });
+
     startTimer();
   </script>
 </body>
 </html>
-
 
