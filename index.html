@@ -9,18 +9,19 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
     </style>    
     <!-- Google Fontsの読み込み -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio</title>
-    <link rel="stylesheet" href="mitame.CSS?v=20260901">
+    <link rel="stylesheet" href="mitame.CSS?">
+    <script src="script.js" defer></script>
     
 </head>
 <body>
     <div class="custom-cursor" aria-hidden="true"></div>
-
     <main class="page-content">
-    <br>
-    <div class="pararax_frame">
+    <!-- 背景画像はこのURLを変更するだけで差し替え可能 -->
+    <div class="pararax_frame" style="--parallax-image: url('media/IMG_3641.jpg');">
     <div class="overlay">@2026 hrr333333333 all rights reserved</div>
     <br>
     <br>
@@ -35,106 +36,45 @@
     <br>
     <br>
     <span class="hrr">HRR
-        <span class="ﾖ">
-        3333333333</span></span>
+        <span class="namae">3333333333</span>
+    </span>
     </div>
 
     <div class="carousel">
     <div class="carousel-track">
     <!-- リストアイテム（必要に応じて複製） -->
     <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文">
-    <figcaption>プロジェクトNで作成したサイト</figcaption></div>
-
-    <div class="carousel-item" role="button"><img src="media/3062c3a78182fa32.JPEG" alt="画像の説明文">
-    <figcaption>美しい3Dモデル</figcaption></div>
+    </div>
 
     <div class="carousel-item" role="button"><img src="media/wood.JPEG" alt="画像の説明文">
-    <figcaption>blenderで作成したキャラクター</figcaption></div>
+    </div>
 
     <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" autoplay muted loop playsinline></video>
-    <figcaption>unityで作成したゲーム</figcaption></div>
+    </div>
+    
 
-    <!-- ループ用に関数を繋げるために同じアイテムを複製 -->
     <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文">
-    <figcaption>プロジェクトNで作成したサイト</figcaption></div>
-
-    <div class="carousel-item" role="button"><img src="media/3062c3a78182fa32.JPEG" alt="画像の説明文">
-    <figcaption>美しい3Dモデル</figcaption></div>
+    </div>
 
     <div class="carousel-item" role="button"><img src="media/wood.JPEG" alt="画像の説明文">
-    <figcaption>blenderで作成したキャラクター</figcaption></div>
+    </div>
 
     <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" autoplay muted loop playsinline></video>
-    <figcaption>unityで作成したゲーム</figcaption></div>
     </div>
 </div>
 
     <section class="about" aria-labelledby="about-title">
-        <h2 class="reveal" id="about-title">ABOUT</h2>
+        <h1 class="reveal" id="about-title" style="text-align: center;">ABOUT</h1>
         <div class="down-arrow reveal"></div><br>
         <div class="down-arrow reveal"></div><br>
         <div class="down-arrow reveal"></div><br>
-        <h2 class="rainbow-text" >
-        🙏🙏🙏
-        </h2>
+        
         <br>
         <br>
     </section>
     </main>
-</div>
 
 
-<script>
-    const customCursor = document.querySelector('.custom-cursor');
-    const hoverTargets = document.querySelectorAll('a, button, [role="button"]');
-
-    if (customCursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        document.addEventListener('pointermove', (event) => {
-            customCursor.style.left = `${event.clientX}px`;
-            customCursor.style.top = `${event.clientY}px`;
-            customCursor.classList.remove('is-hidden');
-        });
-
-        document.addEventListener('pointerleave', () => {
-            customCursor.classList.add('is-hidden');
-        });
-
-        hoverTargets.forEach((target) => {
-            target.addEventListener('pointerenter', () => {
-                customCursor.classList.add('is-hovering');
-            });
-            target.addEventListener('pointerleave', () => {
-                customCursor.classList.remove('is-hovering');
-            });
-        });
-    }
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        customCursor?.remove();
-    }
-
-    const revealTargets = document.querySelectorAll('.reveal');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        revealTargets.forEach((target) => target.classList.add('is-visible'));
-    } else if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -8%'
-        });
-
-        revealTargets.forEach((target) => revealObserver.observe(target));
-    } else {
-        revealTargets.forEach((target) => target.classList.add('is-visible'));
-    }
-</script>
 
 </body>
 </html>
