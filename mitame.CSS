@@ -24,27 +24,54 @@ body {
 /* 画面内に入った文字を下からふわっと表示する */
 .reveal {
   --reveal-distance: 24px;
+  --reveal-duration: 200ms;
+  --reveal-char-delay: 0ms;
+  --reveal-char-stagger: 24ms;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(var(--reveal-distance));
   transform-origin:  center; 
-  animation: reveal-character 200ms linear both;
 }
 
 .reveal.is-visible {
+  opacity: 1;
+  visibility: visible;
   transform: translateY(var(--reveal-distance));
   transform-origin:  center;
-  animation: reveal-character 50ms linear both ;
+  animation: reveal-character var(--reveal-duration) linear both;
+}
+
+.reveal-heading.is-visible {
+  animation-name: reveal-heading-animation;
+  animation-timing-function: steps(3, jump-end);
+}
+
+.reveal-image.is-visible {
+  animation-name: reveal-image-animation;
+  animation-timing-function: linear;
+  --reveal-duration: 200ms;
 }
 
 .reveal.is-visible .reveal-char {
   display: inline-block;
-  animation: reveal-character 200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(var(--reveal-char-index, 0) * 24ms + var(--reveal-char-delay, 0ms));
+  animation: reveal-character var(--reveal-duration) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--reveal-char-index, 0) * var(--reveal-char-stagger) + var(--reveal-char-delay));
+}
+
+.reveal-heading.is-visible .reveal-char {
+  animation-name: reveal-heading-animation;
+  animation-timing-function: steps(3, end);
+}
+
+.reveal-image.is-visible .reveal-char {
+  animation-name: reveal-image-animation;
+  animation-timing-function: linear;
+  --reveal-duration: 200ms;
 }
 
 @keyframes reveal-character {
   0% {
-    opacity: 0;
+    opacity: 1;
     transform: scaleY(0)scaleX(1);
   }
 
@@ -62,6 +89,53 @@ body {
     transform: scaleY(1)scaleX(1);
   }
 }
+
+@keyframes reveal-heading-animation {
+  0% {
+    color: transparent;
+    opacity: 1;
+    background-color: #00000000;
+    
+  }
+
+  50% {
+    color:#ffffff;
+    background-color: #000000;
+    
+  }
+
+  100% {
+    color: #000000;
+    opacity: 1;
+    background-color: transparent;
+    
+  }
+}
+
+@keyframes reveal-image-animation {
+  0% {
+    opacity: 0;
+    
+    filter: brightness(0%) grayscale(100%);
+  }
+
+  33.33% {
+    opacity: 1;
+    filter: brightness(0%) grayscale(100%);
+  }
+
+  66.66% {
+    opacity: 1;
+    filter: brightness(100%) grayscale(100%);
+  }
+
+  100% {
+    opacity: 1;
+    
+    filter: brightness(100%) grayscale(0%);
+  }
+}
+
 
 @keyframes reveal-in {
   0% {
@@ -278,7 +352,7 @@ p {
 
 .custom-cursor {
   --cursor-size: 60px;
-  
+
   width: var(--cursor-size);
   height: var(--cursor-size);
   background: #ffffff;
@@ -333,6 +407,7 @@ clip-path: polygon(45% 70%, 45% 40%, 55% 40%, 80% 75%, 55% 100%, 30% 80%);
   .reveal.is-visible {
     animation: none;
     opacity: 1;
+    visibility: visible;
     transform: none;
     transition: none;
   }

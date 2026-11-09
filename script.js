@@ -90,7 +90,9 @@
             });
         }, {
             threshold: 0.15,
-            rootMargin: '0px 0px -1%'
+            // 下端を縮めると、要素が画面のより上まで来てから表示判定されます。
+            // %の値を調整して、revealの再生開始位置を変更できます。
+            rootMargin: '0px 0px -6%'
         });
 
         revealTargets.forEach((target) => revealObserver.observe(target));
