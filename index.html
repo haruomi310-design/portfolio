@@ -35,14 +35,19 @@
     <br>
     <br>
     <br>
-    <span class="hrr">HRR
-        <span class="namae">3333333333</span>
-    </span>
+    <div class="hero-name" aria-label="HRR3333333333">
+        <span class="hrr">HRR</span>
+        <span class="namae" aria-hidden="true">3333333333</span>
+    </div>
     </div>
 
-    <div class="carousel">
+    <nav class="home-header-nav" aria-label="メインナビゲーション">
+        <a href="#works">WORKS</a>
+        <a href="#about">ABOUT</a>
+    </nav>
+
+    <div class="carousel" id="works">
     <div class="carousel-track">
-    <!-- リストアイテム（必要に応じて複製） -->
     <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文">
     </div>
 
@@ -51,26 +56,40 @@
 
     <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" autoplay muted loop playsinline></video>
     </div>
-    
 
-    <div class="carousel-item" role="button"><img src="media/hoshiriwa_site.JPEG" alt="画像の説明文">
+    <a class="carousel-item carousel-project-link" href="work_better_notch.html" aria-label="BetterNotchの制作ページ">
+        <img src="media/betternotch_desktop.JPEG" alt="BetterNotchの画面">
+        <figcaption>BetterNotch</figcaption>
+    </a>
+
+    <div class="carousel-item" role="button" aria-hidden="true"><img src="media/hoshiriwa_site.JPEG" alt="">
     </div>
 
-    <div class="carousel-item" role="button"><img src="media/wood.JPEG" alt="画像の説明文">
+    <div class="carousel-item" role="button" aria-hidden="true"><img src="media/wood.JPEG" alt="">
     </div>
 
-    <div class="carousel-item" role="button"><video src="media/画面収録 2026-07-21 10.12.12.MP4" alt="動画の説明文" autoplay muted loop playsinline></video>
+    <div class="carousel-item" role="button" aria-hidden="true"><video src="media/画面収録 2026-07-21 10.12.12.MP4" aria-label="動画の説明文" autoplay muted loop playsinline></video>
     </div>
+
+    <a class="carousel-item carousel-project-link" href="work_better_notch.html" aria-label="BetterNotchの制作ページ" aria-hidden="true" tabindex="-1">
+        <img src="media/betternotch_desktop.JPEG" alt="">
+    </a>
 </div>
 
-    <section class="about" aria-labelledby="about-title">
-        <h1 class="reveal" id="about-title" style="text-align: center;">ABOUT</h1>
-        <div class="down-arrow reveal"></div><br>
-        <div class="down-arrow reveal"></div><br>
-        <div class="down-arrow reveal"></div><br>
-        
+    <section class="about" id="about" aria-labelledby="about-title">
+        <h1 class="reveal" id="about-title" style="text-align: left;">INTRODUCTION</h1>
         <br>
         <br>
+        <br>
+        <br>
+
+        <p class="reveal about-line">これはアニメーションのテストです</p>
+        <p class="reveal about-line">これはアニメーションのテストです</p>
+        <p class="reveal about-line">これはアニメーションのテストです</p>
+        <p class="reveal about-line">これはアニメーションのテストです</p>
+        <p class="reveal about-line">これはアニメーションのテストです</p>
+        <img src="media/hoshiriwa_site.JPEG" class ="reveal" alt="ホシリワのWebサイト画面" style="width: 50%; height: auto;">
+        <br><br><br><br><br><br><br><br>
     </section>
     </main>
 

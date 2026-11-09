@@ -13,17 +13,37 @@
 <body class="project-page">
     <div class="custom-cursor" aria-hidden="true"></div>
     <main class="page-content">
-    
+
     <div class="pararax_frame better-notch-hero" style="--parallax-image: url('media/IMG_3641.jpg');">
         <div class="namae better-notch-title">BetterNotch</div>
     </div>
+
+    <section class="project-showcase reveal" aria-label="BetterNotchのデバイス別デモ">
+        <figure class="device-demo">
+            <img
+                class="device-demo-poster"
+                src="media/pixsolo-mockup-poster.jpg"
+                alt=""
+                aria-hidden="true"
+            >
+            <video
+                class="device-demo-video"
+                src="media/pixsolo-mockup-20261107-190407.mp4"
+                aria-label="デバイス上で動作するBetterNotchのデモ"
+                muted
+                playsinline
+                preload="auto"
+            ></video>
+            <figcaption class="sr-only">デバイス別の動作デモを一度だけ再生します。</figcaption>
+        </figure>
+    </section>
+
     <section class="project-overview reveal" aria-labelledby="overview-title">
         <div class="project-section-heading">
             <h1 id="overview-title">概要</h1>
-            <h2>制作理由</h2>
         </div>
-        <div class="project-overview-copy">
-            <p>macの notchを改善するためのアプリケーションです。<br>
+        <div style="text-align: left;" class="project-overview-copy">
+            <p >macの notchを改善するためのアプリケーションです。<br>
                 まるで元からある機能かのように感じる滑らかなアニメーションを実装することにこだわりました。<br>
                 
             <br>
@@ -31,12 +51,6 @@
         
         </p>
         </div>
-    </section>
-
-    <section class="project-showcase reveal" aria-label="成果物の画像">
-        <figure class="project-image-frame">
-            <img src="media/betternotch_desktop.JPEG" alt="成果物の画面">
-        </figure>
     </section>
 
     <footer class="project-footer">
