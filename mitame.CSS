@@ -49,7 +49,7 @@ body {
 .reveal-image.is-visible {
   animation-name: reveal-image-animation;
   animation-timing-function: linear;
-  --reveal-duration: 200ms;
+  --reveal-duration: 500ms;
 }
 
 .reveal.is-visible .reveal-char {
@@ -66,7 +66,7 @@ body {
 .reveal-image.is-visible .reveal-char {
   animation-name: reveal-image-animation;
   animation-timing-function: linear;
-  --reveal-duration: 200ms;
+  --reveal-duration: 500ms;
 }
 
 @keyframes reveal-character {
@@ -116,23 +116,35 @@ body {
   0% {
     opacity: 0;
     
+    filter: brightness(0%) grayscale(100%)blur(10px);
+  }
+  5% {
+    opacity: 0;
+    
+    filter: brightness(200%) grayscale(100%);
+  }
+  10% {
+    opacity: 0;
+    
     filter: brightness(0%) grayscale(100%);
   }
 
   33.33% {
     opacity: 1;
-    filter: brightness(0%) grayscale(100%);
+    
+    filter: brightness(0%) grayscale(100%)blur(1px);
   }
 
   66.66% {
     opacity: 1;
-    filter: brightness(100%) grayscale(100%);
+    
+    filter: brightness(100%) grayscale(20%);
   }
 
   100% {
     opacity: 1;
     
-    filter: brightness(100%) grayscale(0%);
+    filter: brightness(100%) grayscale(0%)blur(0px);
   }
 }
 
@@ -1092,7 +1104,7 @@ clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
 
 @media (max-width: 700px) {
   .hero-name {
-    font-size: min(15rem, 10.5vw);
+    font-size: clamp(3.25rem, 12vw, 8rem);
   }
 
   .home-header-nav {
@@ -1109,5 +1121,121 @@ clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
   .project-page .project-overview {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+}
+
+/* スマートフォンではPC版のレイアウトを保ちつつ、読みやすさだけを調整する。 */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.15;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+
+  .pararax_frame {
+    background-attachment: scroll;
+  }
+
+  .hero-name {
+    max-width: none;
+    font-size: clamp(3.25rem, 12vw, 8rem);
+  }
+
+  .overlay {
+    font-size: 0.65rem;
+    letter-spacing: 0.02em;
+  }
+
+  .home-header-nav {
+    right: 16px;
+    gap: 14px;
+    font-size: 0.65rem;
+  }
+
+  .carousel {
+    padding: 12px 0;
+  }
+
+  .carousel-item {
+    flex-basis: 78vw;
+    padding: 12px;
+  }
+
+  .carousel-item img,
+  .carousel-item video {
+    height: auto;
+    aspect-ratio: 2 / 1;
+    border-radius: 28px;
+  }
+
+  .about {
+    padding: 0 16px;
+  }
+
+  .about img {
+    width: 100% !important;
+  }
+
+  .about > br {
+    display: none;
+  }
+
+  .about > .about-line {
+    margin: 1.5em 0;
+  }
+
+  .project-page .project-overview,
+  .project-page .project-showcase {
+    width: min(1120px, calc(100% - 32px));
+  }
+
+  .project-page .project-overview {
+    padding: 56px 0 72px;
+  }
+
+  .project-page .project-section-heading h1 {
+    margin-bottom: 18px;
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .project-page .project-section-heading h2 {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+
+  .project-page .project-overview-copy p {
+    font-size: 1rem;
+    line-height: 2;
+    overflow-wrap: anywhere;
+  }
+
+  .better-notch-title {
+    font-size: clamp(2.75rem, 14vw, 6rem);
+  }
+
+  .better-notch-hero {
+    min-height: 16rem;
+  }
+
+  .device-demo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .project-page .project-footer {
+    padding: 22px 16px;
+    font-size: 0.8rem;
   }
 }
