@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour:BLED,SCAN@0..100,-53..100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
+
 *,
 *::before,
 *::after {
@@ -52,6 +55,12 @@ body {
   --reveal-duration: 500ms;
 }
 
+.reveal-icon.is-visible {
+  animation-name: reveal-icon-animation;
+  animation-timing-function: ease-in-out;
+  --reveal-duration: 400ms;
+}
+
 .reveal.is-visible .reveal-char {
   display: inline-block;
   animation: reveal-character var(--reveal-duration) cubic-bezier(0.2, 0.8, 0.2, 1) both;
@@ -67,6 +76,12 @@ body {
   animation-name: reveal-image-animation;
   animation-timing-function: linear;
   --reveal-duration: 500ms;
+}
+
+.reveal-icon.is-visible .reveal-char {
+  animation-name: reveal-icon-animation;
+  animation-timing-function: ease-in-out;
+  --reveal-duration: 400ms;
 }
 
 @keyframes reveal-character {
@@ -95,20 +110,20 @@ body {
     color: transparent;
     opacity: 1;
     background-color: #00000000;
-    
+    font-variation-settings: "BLED" 200, "SCAN" -53;
   }
 
   50% {
     color:#ffffff;
     background-color: #000000;
-    
+    font-variation-settings: "BLED" 200, "SCAN" 50;
   }
 
   100% {
     color: #000000;
     opacity: 1;
     background-color: transparent;
-    
+    font-variation-settings: "BLED" 0, "SCAN" -30;
   }
 }
 
@@ -149,6 +164,7 @@ body {
 }
 
 
+
 @keyframes reveal-in {
   0% {
     opacity: 0;
@@ -173,8 +189,49 @@ body {
   
 }
 
+@keyframes reveal-icon-animation {
+  0% {
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(0.5);
+    filter: brightness(0%) grayscale(100%)blur(10px);
+    
+  }
+  5% {
+    opacity: 0;
+    
+    transform: scale(0.9);
+    filter: brightness(200%) grayscale(100%);
+  }
+  10% {
+    opacity: 0;
+    
+    transform: scale(1.0);
+    filter: brightness(0%) grayscale(100%);
+  }
 
+  33.33% {
+    opacity: 1;
+    border-radius: 10%;
+    transform: scale(0.5);
+    filter: brightness(0%) grayscale(100%)blur(1px);
+  }
 
+  66.66% {
+    opacity: 1;
+    border-radius: 0%;
+    transform: scale(1);
+    filter: brightness(100%) grayscale(20%);
+  }
+
+  100% {
+    opacity: 1;
+    border-radius: 0%;
+    transform: scale(1);
+    filter: brightness(100%) grayscale(0%)blur(0px);
+    
+  }
+}
 
 @keyframes nuxtIn {
   0% {
@@ -190,18 +247,29 @@ body {
 h1 {
     margin: 0;
     max-width: 100%;
-    font-size: 10rem;
+    font-size: 7rem;
     color: #000000;
     font-weight: bold;
     text-align: left;
 }
 
-
-
 h2 {
     text-align: left;
     font-size: 5rem;
     color: #000000;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Sixtyfour", monospace;
+    font-variation-settings: "BLED" 0, "SCAN" -30;
+}
+
+.namae,
+.hrr,
+.hero-name {
+    font-family: "Jost", sans-serif;
 }
 
 p {
@@ -216,6 +284,51 @@ p {
 
 #about > .about-line {
     margin: 1em 0 2em;
+}
+
+.about-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.about-profile-icon {
+  width: 40%;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.about-profile-icon img {
+  display: block;
+  width: 80%;
+  height: auto;
+}
+
+.about-profile-details {
+  flex: 1;
+}
+
+.about-profile-name {
+  margin: 0 0 24px;
+}
+
+.about-profile-list {
+  margin: 0;
+}
+
+.about-profile-list div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.about-profile-list dt,
+.about-profile-list dd,
+.about-profile-bio {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .overlay {
@@ -1124,6 +1237,13 @@ clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
   }
 }
 
+.about-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  text-align: center;
+}
+
 /* スマートフォンではPC版のレイアウトを保ちつつ、読みやすさだけを調整する。 */
 @media (max-width: 600px) {
   body {
@@ -1184,6 +1304,19 @@ clip-path: polygon(100% 0%, 100% 60%, 50% 100%, 0% 60%, 0% 0%, 50% 40%);
 
   .about {
     padding: 0 16px;
+  }
+
+  .about-profile {
+    display: block;
+  }
+
+  .about-profile-icon {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .about-profile-list div {
+    grid-template-columns: 96px 1fr;
   }
 
   .about img {
